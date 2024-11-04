@@ -2,7 +2,7 @@ package com.brfdev.helloworld.di
 
 import com.brfdev.helloworld.dependencies.MyRepository
 import com.brfdev.helloworld.dependencies.MyRepositoryImpl
-import com.brfdev.helloworld.dependencies.MyViewModel
+import com.brfdev.helloworld.screens.home.MyViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf

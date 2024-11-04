@@ -1,4 +1,4 @@
-package com.brfdev.helloworld
+package com.brfdev.helloworld.util
 
 actual class BatteryManager {
     actual fun getBatteryLevel(): Int {

@@ -1,4 +1,4 @@
-package com.brfdev.helloworld
+package com.brfdev.helloworld.util
 
 import platform.UIKit.UIDevice
 

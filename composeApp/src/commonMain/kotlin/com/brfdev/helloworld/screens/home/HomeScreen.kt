@@ -1,4 +1,4 @@
-package com.brfdev.helloworld.screens
+package com.brfdev.helloworld.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,6 +16,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,9 +29,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import com.brfdev.helloworld.dependencies.MyViewModel
 import helloworld.composeapp.generated.resources.Res
 import helloworld.composeapp.generated.resources.sobrenome
+import io.ktor.util.logging.KtorSimpleLogger
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -45,6 +47,12 @@ fun HomeScreen(
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var cellphone by remember { mutableStateOf(TextFieldValue("")) }
 
+    val censoredText by viewModel.text.collectAsState()
+
+    LaunchedEffect(null){
+        KtorSimpleLogger("BRUNO-TESTE").debug("LaunchedEffect")
+        viewModel.getTextCensored("Your piece of shit")
+    }
 
     Box(
         modifier = Modifier.fillMaxSize().background(deepSpaceGradient).padding(16.dp),
@@ -62,7 +70,7 @@ fun HomeScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "testing ${viewModel.getData()}",
+                text = "testing ${viewModel.getData()} and $censoredText",
                 style = MaterialTheme.typography.h2,
                 color = Color.White
             )
